@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head> </head>
+<style>
+	input { background-color: pink; }
+	#number1 { border2: 2px solid red;}
+	.div1 { text-align:right;background-color:yellow; color:red;width:50px;}
+</style>
+
+<body>
+	<label>number 1</label>
+	<input type="text" name="number1" id="number1" placeholder="enter single digit number"> <br> +<br>
+	<label>number 2</label>
+	<input type="text" name="number2"id="number2"
+placeholder="enter single digit number"><br>
+	<button type="button" onclick="addClick()">AddNow</button><br/>
+	<div class="div1" id="result"></div>
+	
+<script>
+function addClick(){
+	var a = document.getElementById("number1").value;
+	var b = document.getElementById("number2").value;
+	var c = parseInt(a) + parseInt(b);
+	document.getElementById("result").innerHTML=c;
+}
+</script>
+
+</body>
+</html>
+	

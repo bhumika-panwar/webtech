@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bhumika's resume builder</title>
+    <link rel="stylesheet" href="resumestyle1.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>resume builder</h1>
+      <form id="resumeForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="photo">photo:</label>
+        <input type="file" id="photo" accept="image/*" required />
+
+        <label for="address">addess:</label>
+        <textarea id="address" required></textarea>
+
+        <label for="birthdate">birthdate:</label>
+        <input type="date" id="birthdate" required />
+
+        <label for="qualifications">qualifications:</label>
+        <textarea id="qualifications" required></textarea>
+
+        <label for="experience">experience:</label>
+        <textarea id="experience" required></textarea>
+
+        <label for="activities">Curricular activites:</label>
+        <textarea id="activities" required></textarea>
+
+        <label for="achievements">achievements:</label>
+        <textarea id="achievements" required></textarea>
+
+        <label for="linkedin">linkedin:</label>
+        <input type="url" id="linkedin" required />
+
+        <label for="facebook">facebook:</label>
+        <input type="url" id="facebook" required />
+
+        <label for="github">github:</label>
+        <input type="url" id="github" required />
+
+        <button type="button" onclick="generateResume()">
+          Generate Resume
+        </button>
+      </form>
+      <div id="resume" style="display: none">
+        <div id="resumeData"></div>
+        <img id="resumePhoto" src="" />
+        <button onclick="downloadPDF()">Download as PDF</button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      function generateResume() {
+        const name = document.getElementById("name").value;
+        const photo = document.getElementById("photo").files[0];
+        const address = document.getElementById("name").value;
+        const birthdate = document.getElementById("birthdate").value;
+        const qualifications = document
+          .getElementById("qualifications")
+          .value.split(",");
+        const experience = document
+          .getElementById("experience")
+          .value.split(",");
+        const activities = document
+          .getElementById("activities")
+          .value.split(",");
+        const achievements = document
+          .getElementById("achievements")
+          .value.split(",");
+        const linkdin = document.getElementById("linkedin").value;
+        const facebook = document.getElementById("facebook").value;
+        const github = document.getElementById("github").value;
+        var data =`Name:${name}<br/>Address:${address}`;
+        document.getElementById("resumeData").innerHTML = data;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          document.getElementById("resumePhoto").src = event.target.result;
+        };
+        reader.readAsDataURL(photo);
+        document.getElementById("resume").style.display = "block";
+      }
+      function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        pdf.html(document.getElementById("resume"), {
+          callback: function (pdf) {
+            pdf.save("resume.pdf");
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

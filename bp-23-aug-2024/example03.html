@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+ <title>Restaurant Menu</title>
+</head>
+<body>
+ <h1>Welcome to Sagar Gaire Restaurant</h1>
+ <h2>Our Menu</h2>
+ <h2>Starters</h2>
+ <ul type="square">
+ <li>Cheese Soup - Rs. 80.99</li>
+ <li>Tomato Soup - Rs. 50.99</li>
+ <li>Veg Soup - Rs. 60.99</li>
+ </ul>
+ <h2>Main Courses</h2>
+ <ol type="A" start="5">
+ <li>Veg Briyani - Rs. 180.99</li>
+ <li>Chole Kulche - Rs. 140.99</li>
+ <li>Burger - Rs. 160.99</li>
+ </ol>
+ <h2>Desserts</h2>
+ <ul>
+ <li>Vanilla Cake - Rs. 70.99</li>
+ <li>Cheesecake - Rs. 60.99</li>
+ <li>Chocolate Cake - Rs. 80.99</li>
+ </ul>
+</body>
+</html>
+Example: Using CSS with <ol> and <ul> tag
+Restaurant Menu
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+ <title>Restaurant Menu</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ }
+ h1 {color: #333; font-size: 36px; }
+ h2 {color: #666; font-size: 28px;
+ }
+ .menu-section { margin-bottom: 30px;
+border: 4px dashed blue; }
+ .dish-name { font-weight: bold;
+color:magenta; text-align: center; }
+ .price {
+ color: #0000ff;
+ font-style: italic;
+ }
+ </style>
+</head>
+<body>
+ <h1>Welcome to Sagar Gaire Restaurant</h1>
+ <h2>Our Menu</h2>
+ <div class="menu-section">
+ <h2>Starters</h2>
+ <ul>
+ <li><span class="dish-name">Cheese
+Soup</span> - <span class="price">Rs.
+80.99</span></li>
+ <li><span class="dish-name">Tomato
+Soup</span> - <span class="price">Rs.
+50.99</span></li>
+ <li><span class="dish-name">Veg
+Soup</span> - <span class="price">Rs.
+60.99</span></li>
+ </ul>
+ </div>
+ <div class="menu-section">
+ <h2>Main Courses</h2>
+ <ol>
+ <li><span class="dish-name">Veg
+Briyani</span> - <span class="price">Rs.
+180.99</span></li>
+ <li><span class="dish-name">Chole
+Kulche</span> - <span class="price">Rs.
+140.99</span></li>
+ <li><span
+class="dish-name">Burger</span> - <span
+class="price">Rs. 160.99</span></li>
+ </ol>
+ </div>
+ <div class="menu-section">
+ <h2>Desserts</h2>
+ <ul>
+ <li><span class="dish-name">Vanilla
+Cake</span> - <span class="price">Rs.
+70.99</span></li>
+ <li><span
+class="dish-name">Cheesecake</span> - <span
+class="price">Rs. 60.99</span></li>
+ <li><span class="dish-name">Chocolate
+Cake</span> - <span class="price">Rs.
+80.99</span></li>
+ </ul>
+ </div>
+</body>
+</html>

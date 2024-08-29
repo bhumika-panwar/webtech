@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bhumika's resume builder</title>
+    <link rel="stylesheet" href="resumestyle2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>resume builder</h1>
+      <form id="resumeForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="photo">photo:</label>
+        <input type="file" id="photo" accept="image/*" required />
+
+        <label for="address">addess:</label>
+        <textarea id="address" required></textarea>
+
+        <label for="birthdate">birthdate:</label>
+        <input type="date" id="birthdate" required />
+
+        <label for="qualifications">qualifications:</label>
+        <textarea id="qualifications" required></textarea>
+
+        <label for="experience">experience:</label>
+        <textarea id="experience" required></textarea>
+
+        <label for="activities">Curricular activites:</label>
+        <textarea id="activities" required></textarea>
+
+        <label for="achievements">achievements:</label>
+        <textarea id="achievements" required></textarea>
+
+        <label for="linkedin">linkedin:</label>
+        <input type="url" id="linkedin" required />
+
+        <label for="facebook">facebook:</label>
+        <input type="url" id="facebook" required />
+
+        <label for="github">github:</label>
+        <input type="url" id="github" required />
+
+        <button type="button" onclick="generateResume()">
+          Generate Resume
+        </button>
+      </form>
+      <div id="resume" style="display: none">
+        <div id="resumeData"></div>
+        <img id="resumePhoto" src="" />
+        <button onclick="downloadPDF()">Download as PDF</button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      function generateResume() {
+        const name = document.getElementById("name").value;
+        const photo = document.getElementById("photo").files[0];
+        const address = document.getElementById("address").value;
+        const birthdate = document.getElementById("birthdate").value;
+        //step 4//
+        const qualifications = convertToTable("S.no,Qualifications,Year","qualifications");
+        const experience = convertToList("experience");
+        const activities = convertToList("activities");
+        const achievements = convertToList("achievements");
+        const linkdin = document.getElementById("linkedin").value;
+        const facebook = document.getElementById("facebook").value;
+        const github = document.getElementById("github").value;
+        if(photo) photoURL =URL.createObjectURL(photo);
+        else photoURL='logo.png';
+        var data = templateString(name,photoURL,address,birthdate,qualifications,experience,activities,achievements,linkdin,facebook,github);
+        
+        document.getElementById("resumeData").innerHTML = data;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          document.getElementById("resumePhoto").src = event.target.result;
+        };
+        reader.readAsDataURL(photo);
+        document.getElementById("resume").style.display = "block";
+      }
+      //step 5//
+      function convertToTable( columns,fieldName ) {
+        field = document.getElementById(fieldName).value.trim();
+        const data= columns.concat('\n').concat(field);
+        const lines=data.trim().split('\n');
+        let result="";
+        lines.forEach((lines,index) => {
+            const cell= lines.split(',');
+            result+='<tr>';
+            cell.forEach(cell=> {
+                result += `<td> ${cell.trim()}</td>`
+            });
+            result += `</tr>`;
+            //console.log('Inside fn', result);
+            });
+            return result;
+          }
+          // step 6//
+          function convertToList(fieldName) {
+            const data = document.getElementById(fieldName).value.trim();
+            const lines= data.split('\n');
+            let list="";
+            lines.forEach(line => {
+                const data="<li>"  + line.trim() + "</li>";
+                list += data;
+                });
+                return list;
+
+            }
+            //step 7//  
+            function templateString(name,photoURL,address,birthdate,qualifications,experience,activities,achievements,linkedin,facebook,github){
+                const data=`<div class="container">
+                <div class="header">
+                    <img src="${photoURL}" alt="${name}" title="${name}>"
+                    <h1>Address:</h1><p>${address}</p>
+                    <p>Date of Birth:${birthdate}</p></div>
+                <div class="info-section">
+                    <h2>Qualification</h2><table>${qualifications}</table></div>
+                 <div class="info-section">               
+                    <h2>Work Experience</h2><ul>${experience}</ul></div>
+                <div class="info-section"> 
+                    <h2>Curricular Activities</h2><ul>${activities}</ul></div>
+                <div class="info-section"> 
+                    <h2>Achievements</h2><ul>${achievements}</ul></div>
+                <div class="links">
+                    <h2>Connect with me:</h2>
+                    <a href="${linkedin}" target="_blank">LinkedIn</a>
+                    <a href="${facebook}" target="_blank">Facebook</a>
+                    <a href="${github}" target="_blank">GitHub</a>
+                </div>
+            </div>`; //End of Template String
+            return data;
+        }
+
+      function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        pdf.html(document.getElementById("resume"), {
+          callback: function (pdf) {
+            pdf.save("resume.pdf");
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

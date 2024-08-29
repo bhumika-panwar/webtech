@@ -1,0 +1,149 @@
+body {
+  font-family: Arial, san-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffff;
+  box-shadow: 0px 0px 10px 0px #aaa;
+}
+
+label {
+  display: black;
+  margin-left: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#resume {
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px #ddd;
+}
+
+#resume img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.resume-secton {
+  margin-top: 20px;
+}
+
+.resume-section h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.resume-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.resume-section ul li {
+  margin-bottom: 5px;
+}
+
+.header {
+  text-align: center;
+}
+
+.hearder h1 {
+  font-size: 2.5em;
+  margin: 10px 0;
+}
+
+.header p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.social-link a {
+  text-decoration: none;
+  margin-right: 15px;
+  color: #007bff;
+}
+.container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px #aaa;
+}
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+.header img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+.header h1 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 2.5em;
+}
+.header p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #555;
+}
+.info-section {
+  margin-top: 20px;
+}
+.info-section h2 {
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+.info-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.info-section table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+.info-section th {
+  background-color: #f2f2f2;
+}
+.info-section ul {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+.links {
+  margin-top: 20px;
+  text-align: center;
+}
+.links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+.links a:hover {
+  text-decoration: underline;
+}

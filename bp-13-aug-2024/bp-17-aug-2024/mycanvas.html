@@ -1,0 +1,14 @@
+<canvas id="canvas1">your browser does not support Canvas tag.</canvas>
+<script>
+  const c = document.getElementById("canvas1");
+  const context = c.getContext("2d");
+  context.fillStyle = "green";
+  context.fillRect (15, 15, 70, 45);
+  with (context) {
+    globalAlapha = 0.3;
+    fillStyle = "red";
+    fillRect (45, 45, 70, 45);
+    fillStyle = "blue";
+    fillRect (75, 75, 70, 45);
+  }
+</script>
